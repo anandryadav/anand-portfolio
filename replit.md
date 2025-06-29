@@ -109,6 +109,11 @@ Changelog:
   * Added resume download endpoint serving PDF file
   * Added download resume buttons to hero and contact sections
   * Updated storage interface to support contact CRUD operations
+- June 29, 2025. Updated UI and social media integration:
+  * Made all hero section buttons consistent with solid blue styling
+  * Added profile image integration from user's WhatsApp photo
+  * Updated social media links with real profiles: LinkedIn, GitHub, Twitter/X
+  * Fixed button layout and responsive design for mobile and desktop
 ```
 
 ## User Preferences

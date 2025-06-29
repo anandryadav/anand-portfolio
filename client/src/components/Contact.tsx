@@ -65,9 +65,9 @@ export default function Contact() {
   };
 
   const socialLinks = [
-    { icon: FaLinkedin, href: "https://www.linkedin.com/in/anandryadav", label: "LinkedIn" },
-    { icon: FaGithub, href: "#", label: "GitHub" },
-    { icon: FaTwitter, href: "#", label: "Twitter" }
+    { icon: FaLinkedin, href: "https://www.linkedin.com/in/anandryadav/", label: "LinkedIn" },
+    { icon: FaGithub, href: "https://github.com/anandryadav", label: "GitHub" },
+    { icon: FaTwitter, href: "https://x.com/anandryadav", label: "Twitter" }
   ];
 
   return (
