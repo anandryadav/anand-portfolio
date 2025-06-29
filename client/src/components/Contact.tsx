@@ -126,17 +126,6 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Download Resume Button */}
-            <div className="mt-8">
-              <Button
-                onClick={handleDownloadResume}
-                className="bg-secondary-custom hover:bg-secondary-custom/90 text-white px-6 py-3 rounded-full font-medium transition-all duration-300 transform hover:scale-105 flex items-center space-x-2"
-              >
-                <Download size={16} />
-                <span>Download Resume</span>
-              </Button>
-            </div>
-
             {/* Social Media Links */}
             <div className="mt-8">
               <h4 className="text-lg font-semibold mb-4">Follow Me</h4>
