@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { Mail, Phone, MapPin } from "lucide-react";
-import { FaLinkedin, FaDribbble, FaBehance, FaGithub, FaTwitter } from "react-icons/fa";
+import { Mail, Phone, MapPin, Download } from "lucide-react";
+import { FaLinkedin, FaGithub, FaTwitter } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
+import { useMutation } from "@tanstack/react-query";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -21,15 +22,46 @@ export default function Contact() {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
+  const contactMutation = useMutation({
+    mutationFn: async (contactData: typeof formData) => {
+      const response = await fetch("/api/contacts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(contactData),
+      });
+      if (!response.ok) {
+        throw new Error("Failed to submit contact form");
+      }
+      return response.json();
+    },
+    onSuccess: () => {
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for your message. I'll get back to you soon!",
+      });
+      setFormData({ name: "", email: "", subject: "", message: "" });
+    },
+    onError: () => {
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again.",
+        variant: "destructive",
+      });
+    },
+  });
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate form submission
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for your message. I'll get back to you soon!",
-    });
-    // Reset form
-    setFormData({ name: "", email: "", subject: "", message: "" });
+    contactMutation.mutate(formData);
+  };
+
+  const handleDownloadResume = () => {
+    const link = document.createElement('a');
+    link.href = '/api/resume/download';
+    link.download = 'Anand_Yadav_Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   const socialLinks = [
@@ -92,6 +124,17 @@ export default function Contact() {
                   <p className="text-white/80">Delhi, India</p>
                 </div>
               </div>
+            </div>
+
+            {/* Download Resume Button */}
+            <div className="mt-8">
+              <Button
+                onClick={handleDownloadResume}
+                className="bg-secondary-custom hover:bg-secondary-custom/90 text-white px-6 py-3 rounded-full font-medium transition-all duration-300 transform hover:scale-105 flex items-center space-x-2"
+              >
+                <Download size={16} />
+                <span>Download Resume</span>
+              </Button>
             </div>
 
             {/* Social Media Links */}
@@ -181,9 +224,10 @@ export default function Contact() {
 
               <Button
                 type="submit"
-                className="w-full bg-secondary-custom hover:bg-secondary-custom/90 text-white py-3 px-6 rounded-lg font-medium transition-all duration-300 transform hover:scale-105"
+                disabled={contactMutation.isPending}
+                className="w-full bg-secondary-custom hover:bg-secondary-custom/90 text-white py-3 px-6 rounded-lg font-medium transition-all duration-300 transform hover:scale-105 disabled:opacity-50"
               >
-                Send Message
+                {contactMutation.isPending ? "Sending..." : "Send Message"}
               </Button>
             </form>
           </div>

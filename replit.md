@@ -18,8 +18,9 @@ This is a full-stack portfolio application built with a modern tech stack featur
 - **Runtime**: Node.js with Express.js framework
 - **Language**: TypeScript with ES modules
 - **Database ORM**: Drizzle ORM for type-safe database operations
-- **Database**: PostgreSQL (configured for Neon serverless)
-- **Session Management**: Basic in-memory storage with extensible interface
+- **Database**: SQLite with better-sqlite3 driver for local storage
+- **Session Management**: SQLite storage with extensible interface
+- **File Serving**: Resume download endpoint with Express static file serving
 
 ### Key Design Decisions
 
@@ -101,6 +102,13 @@ Changelog:
   * Updated contact information with real email and phone from resume
   * Added LinkedIn profile link from resume
   * Changed location to Delhi, India
+- June 29, 2025. Added SQLite database and resume download functionality:
+  * Migrated from PostgreSQL to SQLite using better-sqlite3
+  * Added contacts table to store form submissions
+  * Implemented contact form API endpoints with real database storage
+  * Added resume download endpoint serving PDF file
+  * Added download resume buttons to hero and contact sections
+  * Updated storage interface to support contact CRUD operations
 ```
 
 ## User Preferences

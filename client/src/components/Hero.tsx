@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Download } from "lucide-react";
 
 export default function Hero() {
   const scrollToSection = (sectionId: string) => {
@@ -6,6 +7,15 @@ export default function Hero() {
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
+  };
+
+  const handleDownloadResume = () => {
+    const link = document.createElement('a');
+    link.href = '/api/resume/download';
+    link.download = 'Anand_Yadav_Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (
@@ -34,6 +44,14 @@ export default function Hero() {
               className="bg-secondary-custom hover:bg-secondary-custom/90 text-white px-8 py-3 rounded-full font-medium transition-all duration-300 transform hover:scale-105"
             >
               View My Work
+            </Button>
+            <Button
+              onClick={handleDownloadResume}
+              variant="outline"
+              className="border-2 border-white text-white hover:bg-white hover:text-primary-custom px-8 py-3 rounded-full font-medium transition-all duration-300 flex items-center space-x-2"
+            >
+              <Download size={16} />
+              <span>Download Resume</span>
             </Button>
             <Button
               onClick={() => scrollToSection("contact")}
