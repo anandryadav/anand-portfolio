@@ -47,16 +47,14 @@ export default function Hero() {
             </Button>
             <Button
               onClick={handleDownloadResume}
-              variant="outline"
-              className="border-2 border-white text-white hover:bg-white hover:text-primary-custom px-6 py-3 rounded-full font-medium transition-all duration-300 flex items-center justify-center space-x-2 w-full sm:w-auto"
+              className="bg-secondary-custom hover:bg-secondary-custom/90 text-white px-6 py-3 rounded-full font-medium transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2 w-full sm:w-auto"
             >
               <Download size={16} />
               <span>Download Resume</span>
             </Button>
             <Button
               onClick={() => scrollToSection("contact")}
-              variant="outline"
-              className="border-2 border-white text-white hover:bg-white hover:text-primary-custom px-8 py-3 rounded-full font-medium transition-all duration-300 w-full sm:w-auto"
+              className="bg-secondary-custom hover:bg-secondary-custom/90 text-white px-8 py-3 rounded-full font-medium transition-all duration-300 transform hover:scale-105 w-full sm:w-auto"
             >
               Get In Touch
             </Button>
