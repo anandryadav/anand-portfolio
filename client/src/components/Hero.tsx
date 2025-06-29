@@ -25,7 +25,7 @@ export default function Hero() {
           {/* Profile image */}
           <div className="mb-8">
             <img
-              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300"
+              src="/profile-image.jpg"
               alt="Anand Yadav - Principal Software Engineer"
               className="w-32 h-32 rounded-full mx-auto object-cover border-4 border-white/20 shadow-xl"
             />
@@ -38,17 +38,17 @@ export default function Hero() {
             Architecting AI-driven software solutions with 12+ years of experience.
             Specializing in FinTech platforms, microservices, and team leadership.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-3xl mx-auto">
             <Button
               onClick={() => scrollToSection("portfolio")}
-              className="bg-secondary-custom hover:bg-secondary-custom/90 text-white px-8 py-3 rounded-full font-medium transition-all duration-300 transform hover:scale-105"
+              className="bg-secondary-custom hover:bg-secondary-custom/90 text-white px-8 py-3 rounded-full font-medium transition-all duration-300 transform hover:scale-105 w-full sm:w-auto"
             >
               View My Work
             </Button>
             <Button
               onClick={handleDownloadResume}
               variant="outline"
-              className="border-2 border-white text-white hover:bg-white hover:text-primary-custom px-8 py-3 rounded-full font-medium transition-all duration-300 flex items-center space-x-2"
+              className="border-2 border-white text-white hover:bg-white hover:text-primary-custom px-6 py-3 rounded-full font-medium transition-all duration-300 flex items-center justify-center space-x-2 w-full sm:w-auto"
             >
               <Download size={16} />
               <span>Download Resume</span>
@@ -56,7 +56,7 @@ export default function Hero() {
             <Button
               onClick={() => scrollToSection("contact")}
               variant="outline"
-              className="border-2 border-white text-white hover:bg-white hover:text-primary-custom px-8 py-3 rounded-full font-medium transition-all duration-300"
+              className="border-2 border-white text-white hover:bg-white hover:text-primary-custom px-8 py-3 rounded-full font-medium transition-all duration-300 w-full sm:w-auto"
             >
               Get In Touch
             </Button>

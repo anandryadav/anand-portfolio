@@ -5,6 +5,7 @@ import { insertContactSchema } from "@shared/schema";
 import path from "path";
 
 export async function registerRoutes(app: Express): Promise<Server> {
+
   // Contact form submission endpoint
   app.post("/api/contacts", async (req, res) => {
     try {
