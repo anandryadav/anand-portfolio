@@ -10,65 +10,67 @@ export default function Portfolio() {
   const projects = [
     {
       id: 1,
-      title: "E-commerce Platform",
-      description: "Modern, responsive e-commerce solution with advanced filtering and seamless checkout experience.",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=500",
-      category: "web",
-      tags: ["Web Design"],
+      title: "Firmway FinTech Platform",
+      description: "End-to-end development of secure, scalable FinTech platform for financial data automation and reconciliation with microservices architecture.",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=500",
+      category: "fintech",
+      tags: ["FinTech"],
       links: { demo: "#", github: "#" }
     },
     {
       id: 2,
-      title: "Fitness Tracking App",
-      description: "Intuitive mobile app design for tracking workouts, nutrition, and health metrics with beautiful data visualization.",
-      image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=500",
-      category: "mobile",
-      tags: ["Mobile App"],
+      title: "ETL Data Pipeline System",
+      description: "Designed and orchestrated ETL pipelines using Python and Apache Airflow to automate ingestion and transformation of large financial datasets.",
+      image: "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&h=500",
+      category: "backend",
+      tags: ["Data Engineering"],
       links: { demo: "#", github: "#" }
     },
     {
       id: 3,
-      title: "Sustainable Brand Identity",
-      description: "Complete brand identity system for eco-friendly startup including logo, typography, and brand guidelines.",
-      image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=500",
-      category: "branding",
-      tags: ["Branding"],
-      links: { demo: "#", behance: "#" }
+      title: "Microservices Architecture",
+      description: "Implemented scalable microservices using Python FastAPI, Django, and Java Spring Boot for modular, maintainable financial services.",
+      image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&h=500",
+      category: "backend",
+      tags: ["Backend"],
+      links: { demo: "#", github: "#" }
     },
     {
       id: 4,
-      title: "Analytics Dashboard",
-      description: "Data-driven dashboard design with interactive charts, real-time updates, and intuitive navigation.",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=500",
-      category: "web",
-      tags: ["Web Design"],
+      title: "Cloud Infrastructure (AWS/GCP)",
+      description: "Architected and deployed high-performance cloud systems improving reliability and throughput by 55% using Kubernetes, Docker, and CI/CD.",
+      image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&h=500",
+      category: "cloud",
+      tags: ["Cloud"],
       links: { demo: "#", github: "#" }
     },
     {
       id: 5,
-      title: "Food Delivery App",
-      description: "User-friendly food delivery app with seamless ordering process and real-time tracking features.",
-      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=500",
-      category: "mobile",
-      tags: ["Mobile App"],
+      title: "Multi-Platform Web Portal",
+      description: "Developed comprehensive web portal using PHP, Java, Node.js, and AWS services for enterprise clients with real-time data processing.",
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=500",
+      category: "web",
+      tags: ["Web Development"],
       links: { demo: "#", github: "#" }
     },
     {
       id: 6,
-      title: "Tech Startup Branding",
-      description: "Modern brand identity for innovative tech company including visual system and marketing materials.",
-      image: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=500",
-      category: "branding",
-      tags: ["Branding"],
-      links: { demo: "#", behance: "#" }
+      title: "Mobile Application Suite",
+      description: "Led development of 10+ web and mobile applications with REST APIs, coordinating cross-functional teams to deliver client solutions.",
+      image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=500",
+      category: "mobile",
+      tags: ["Mobile Apps"],
+      links: { demo: "#", github: "#" }
     }
   ];
 
   const filters = [
     { id: "all", label: "All" },
-    { id: "web", label: "Web Design" },
-    { id: "mobile", label: "Mobile Apps" },
-    { id: "branding", label: "Branding" }
+    { id: "fintech", label: "FinTech" },
+    { id: "backend", label: "Backend" },
+    { id: "cloud", label: "Cloud" },
+    { id: "web", label: "Web Dev" },
+    { id: "mobile", label: "Mobile" }
   ];
 
   const filteredProjects = activeFilter === "all" 
@@ -122,11 +124,15 @@ export default function Portfolio() {
                   <Badge
                     variant="secondary"
                     className={`px-3 py-1 rounded-full text-sm font-medium ${
-                      project.category === "web"
+                      project.category === "fintech"
                         ? "bg-secondary-custom/10 text-secondary-custom"
-                        : project.category === "mobile"
+                        : project.category === "backend"
                         ? "bg-accent-custom/10 text-accent-custom"
-                        : "bg-primary-custom/10 text-primary-custom"
+                        : project.category === "cloud"
+                        ? "bg-primary-custom/10 text-primary-custom"
+                        : project.category === "web"
+                        ? "bg-secondary-custom/10 text-secondary-custom"
+                        : "bg-accent-custom/10 text-accent-custom"
                     }`}
                   >
                     {project.tags[0]}

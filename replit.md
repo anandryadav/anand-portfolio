@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is a full-stack portfolio application built with a modern tech stack featuring React frontend, Express backend, and PostgreSQL database. The application showcases a creative designer and developer's work with a responsive, professional design.
+This is a full-stack portfolio application built with a modern tech stack featuring React frontend, Express backend, and PostgreSQL database. The application showcases Anand Yadav's work as a Principal Software Engineer with 12+ years of experience in AI-driven software solutions, FinTech platforms, and scalable architecture.
 
 ## System Architecture
 
@@ -33,11 +33,11 @@ This is a full-stack portfolio application built with a modern tech stack featur
 
 ### Frontend Components
 - **Navigation**: Fixed header with smooth scrolling between sections
-- **Hero**: Landing section with profile image and call-to-action buttons
-- **About**: Skills showcase with progress bars and personal introduction
-- **Portfolio**: Project gallery with filtering and modal views
-- **Contact**: Contact form with social media links and toast notifications
-- **Footer**: Simple footer with legal links
+- **Hero**: Landing section showcasing Principal Software Engineer expertise
+- **About**: Technical skills showcase with progress bars and professional background
+- **Portfolio**: Project gallery featuring FinTech platforms, microservices, and cloud solutions
+- **Contact**: Contact form with professional contact information and LinkedIn profile
+- **Footer**: Simple footer with copyright information
 
 ### Backend Infrastructure
 - **Storage Interface**: Abstracted storage layer supporting both memory and database implementations
@@ -93,6 +93,14 @@ This is a full-stack portfolio application built with a modern tech stack featur
 ```
 Changelog:
 - June 29, 2025. Initial setup
+- June 29, 2025. Updated portfolio content for Anand Yadav:
+  * Changed from creative designer to Principal Software Engineer
+  * Updated hero section with 12+ years experience in AI-driven solutions
+  * Modified skills to focus on Java, Python, Cloud Architecture, Microservices
+  * Replaced design projects with FinTech platform, ETL pipelines, cloud infrastructure
+  * Updated contact information with real email and phone from resume
+  * Added LinkedIn profile link from resume
+  * Changed location to Delhi, India
 ```
 
 ## User Preferences

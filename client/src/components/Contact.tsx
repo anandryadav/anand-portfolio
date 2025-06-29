@@ -33,9 +33,7 @@ export default function Contact() {
   };
 
   const socialLinks = [
-    { icon: FaLinkedin, href: "#", label: "LinkedIn" },
-    { icon: FaDribbble, href: "#", label: "Dribbble" },
-    { icon: FaBehance, href: "#", label: "Behance" },
+    { icon: FaLinkedin, href: "https://www.linkedin.com/in/anandryadav", label: "LinkedIn" },
     { icon: FaGithub, href: "#", label: "GitHub" },
     { icon: FaTwitter, href: "#", label: "Twitter" }
   ];
@@ -62,10 +60,10 @@ export default function Contact() {
                 <div>
                   <p className="font-medium">Email</p>
                   <a
-                    href="mailto:alex@portfolio.com"
+                    href="mailto:anandryadav@live.com"
                     className="text-white/80 hover:text-secondary-custom transition-colors duration-300"
                   >
-                    alex@portfolio.com
+                    anandryadav@live.com
                   </a>
                 </div>
               </div>
@@ -77,10 +75,10 @@ export default function Contact() {
                 <div>
                   <p className="font-medium">Phone</p>
                   <a
-                    href="tel:+1234567890"
+                    href="tel:+919702182892"
                     className="text-white/80 hover:text-secondary-custom transition-colors duration-300"
                   >
-                    +1 (234) 567-8900
+                    +91 9702182892
                   </a>
                 </div>
               </div>
@@ -91,7 +89,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="font-medium">Location</p>
-                  <p className="text-white/80">San Francisco, CA</p>
+                  <p className="text-white/80">Delhi, India</p>
                 </div>
               </div>
             </div>

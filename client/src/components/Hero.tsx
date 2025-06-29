@@ -15,18 +15,18 @@ export default function Hero() {
           {/* Profile image */}
           <div className="mb-8">
             <img
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&h=300"
-              alt="Alex Johnson - Creative Designer"
+              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300"
+              alt="Anand Yadav - Principal Software Engineer"
               className="w-32 h-32 rounded-full mx-auto object-cover border-4 border-white/20 shadow-xl"
             />
           </div>
 
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Creative <span className="text-secondary-custom">Designer</span> & Developer
+            Principal <span className="text-secondary-custom">Software</span> Engineer
           </h1>
           <p className="text-xl md:text-2xl mb-8 text-white/90 leading-relaxed">
-            Crafting beautiful digital experiences that blend creativity with functionality.
-            Specializing in UI/UX design and modern web development.
+            Architecting AI-driven software solutions with 12+ years of experience.
+            Specializing in FinTech platforms, microservices, and team leadership.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
