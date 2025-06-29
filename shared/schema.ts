@@ -1,35 +1,45 @@
-import { sqliteTable, text, integer } from "drizzle-orm/sqlite-core";
-import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
-export const users = sqliteTable("users", {
-  id: integer("id").primaryKey({ autoIncrement: true }),
-  username: text("username").notNull().unique(),
-  password: text("password").notNull(),
+// User types and schemas
+export interface User {
+  id: number;
+  username: string;
+  password: string;
+}
+
+export interface InsertUser {
+  username: string;
+  password: string;
+}
+
+export const insertUserSchema = z.object({
+  username: z.string().min(1),
+  password: z.string().min(1),
 });
 
-export const contacts = sqliteTable("contacts", {
-  id: integer("id").primaryKey({ autoIncrement: true }),
-  name: text("name").notNull(),
-  email: text("email").notNull(),
-  subject: text("subject").notNull(),
-  message: text("message").notNull(),
-  createdAt: text("created_at").notNull().default("CURRENT_TIMESTAMP"),
+// Contact types and schemas
+export interface Contact {
+  id: number;
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+  createdAt: string;
+}
+
+export interface InsertContact {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}
+
+export const insertContactSchema = z.object({
+  name: z.string().min(1, "Name is required"),
+  email: z.string().email("Valid email is required"),
+  subject: z.string().min(1, "Subject is required"),
+  message: z.string().min(1, "Message is required"),
 });
 
-export const insertUserSchema = createInsertSchema(users).pick({
-  username: true,
-  password: true,
-});
-
-export const insertContactSchema = createInsertSchema(contacts).pick({
-  name: true,
-  email: true,
-  subject: true,
-  message: true,
-});
-
-export type InsertUser = z.infer<typeof insertUserSchema>;
-export type User = typeof users.$inferSelect;
-export type InsertContact = z.infer<typeof insertContactSchema>;
-export type Contact = typeof contacts.$inferSelect;
+export type InsertUserType = z.infer<typeof insertUserSchema>;
+export type InsertContactType = z.infer<typeof insertContactSchema>;

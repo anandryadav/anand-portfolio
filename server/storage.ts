@@ -1,7 +1,6 @@
-import Database from "better-sqlite3";
-import { drizzle } from "drizzle-orm/better-sqlite3";
-import { users, contacts, type User, type InsertUser, type Contact, type InsertContact } from "@shared/schema";
-import { eq } from "drizzle-orm";
+import { type User, type InsertUser, type Contact, type InsertContact } from "@shared/schema";
+import fs from "fs/promises";
+import path from "path";
 
 export interface IStorage {
   getUser(id: number): Promise<User | undefined>;
@@ -11,92 +10,97 @@ export interface IStorage {
   getAllContacts(): Promise<Contact[]>;
 }
 
-class SQLiteStorage implements IStorage {
-  private db: ReturnType<typeof drizzle>;
+class JsonStorage implements IStorage {
+  private contactsFile = path.join(process.cwd(), "data", "contacts.json");
+  private usersFile = path.join(process.cwd(), "data", "users.json");
 
   constructor() {
-    const sqlite = new Database("portfolio.db");
-    this.db = drizzle(sqlite);
-    this.initTables();
+    this.initFiles();
   }
 
-  private initTables() {
-    // Create tables if they don't exist
+  private async initFiles() {
+    const dataDir = path.join(process.cwd(), "data");
     try {
-      this.db.run(`
-        CREATE TABLE IF NOT EXISTS users (
-          id INTEGER PRIMARY KEY AUTOINCREMENT,
-          username TEXT UNIQUE NOT NULL,
-          password TEXT NOT NULL
-        )
-      `);
+      await fs.mkdir(dataDir, { recursive: true });
       
-      this.db.run(`
-        CREATE TABLE IF NOT EXISTS contacts (
-          id INTEGER PRIMARY KEY AUTOINCREMENT,
-          name TEXT NOT NULL,
-          email TEXT NOT NULL,
-          subject TEXT NOT NULL,
-          message TEXT NOT NULL,
-          created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
-        )
-      `);
+      // Initialize contacts.json if it doesn't exist
+      try {
+        await fs.access(this.contactsFile);
+      } catch {
+        await fs.writeFile(this.contactsFile, JSON.stringify([]));
+      }
+
+      // Initialize users.json if it doesn't exist
+      try {
+        await fs.access(this.usersFile);
+      } catch {
+        await fs.writeFile(this.usersFile, JSON.stringify([]));
+      }
     } catch (error) {
-      console.error("Error creating tables:", error);
+      console.error("Error initializing data files:", error);
     }
+  }
+
+  private async readContacts(): Promise<Contact[]> {
+    try {
+      const data = await fs.readFile(this.contactsFile, "utf-8");
+      return JSON.parse(data);
+    } catch {
+      return [];
+    }
+  }
+
+  private async writeContacts(contacts: Contact[]): Promise<void> {
+    await fs.writeFile(this.contactsFile, JSON.stringify(contacts, null, 2));
+  }
+
+  private async readUsers(): Promise<User[]> {
+    try {
+      const data = await fs.readFile(this.usersFile, "utf-8");
+      return JSON.parse(data);
+    } catch {
+      return [];
+    }
+  }
+
+  private async writeUsers(users: User[]): Promise<void> {
+    await fs.writeFile(this.usersFile, JSON.stringify(users, null, 2));
   }
 
   async getUser(id: number): Promise<User | undefined> {
-    try {
-      const result = this.db.select().from(users).where(eq(users.id, id)).get();
-      return result || undefined;
-    } catch (error) {
-      console.error("Error getting user:", error);
-      return undefined;
-    }
+    const users = await this.readUsers();
+    return users.find(user => user.id === id);
   }
 
   async getUserByUsername(username: string): Promise<User | undefined> {
-    try {
-      const result = this.db.select().from(users).where(eq(users.username, username)).get();
-      return result || undefined;
-    } catch (error) {
-      console.error("Error getting user by username:", error);
-      return undefined;
-    }
+    const users = await this.readUsers();
+    return users.find(user => user.username === username);
   }
 
   async createUser(insertUser: InsertUser): Promise<User> {
-    try {
-      const result = this.db.insert(users).values(insertUser).returning().get();
-      return result;
-    } catch (error) {
-      console.error("Error creating user:", error);
-      throw error;
-    }
+    const users = await this.readUsers();
+    const newId = Math.max(0, ...users.map(u => u.id)) + 1;
+    const user: User = { ...insertUser, id: newId };
+    users.push(user);
+    await this.writeUsers(users);
+    return user;
   }
 
   async createContact(insertContact: InsertContact): Promise<Contact> {
-    try {
-      const contactWithTimestamp = {
-        ...insertContact,
-        createdAt: new Date().toISOString(),
-      };
-      const result = this.db.insert(contacts).values(contactWithTimestamp).returning().get();
-      return result;
-    } catch (error) {
-      console.error("Error creating contact:", error);
-      throw error;
-    }
+    const contacts = await this.readContacts();
+    const newId = Math.max(0, ...contacts.map(c => c.id)) + 1;
+    const contact: Contact = { 
+      ...insertContact, 
+      id: newId,
+      createdAt: new Date().toISOString()
+    };
+    contacts.push(contact);
+    await this.writeContacts(contacts);
+    return contact;
   }
 
   async getAllContacts(): Promise<Contact[]> {
-    try {
-      return this.db.select().from(contacts).all();
-    } catch (error) {
-      console.error("Error getting contacts:", error);
-      return [];
-    }
+    return await this.readContacts();
   }
 }
 
@@ -144,4 +148,4 @@ export class MemStorage implements IStorage {
   }
 }
 
-export const storage = new SQLiteStorage();
+export const storage = new JsonStorage();

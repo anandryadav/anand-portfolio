@@ -102,13 +102,19 @@ Changelog:
   * Updated contact information with real email and phone from resume
   * Added LinkedIn profile link from resume
   * Changed location to Delhi, India
-- June 29, 2025. Added SQLite database and resume download functionality:
-  * Migrated from PostgreSQL to SQLite using better-sqlite3
+- June 29, 2025. Added database and resume download functionality:
+  * Initially implemented SQLite database with better-sqlite3
   * Added contacts table to store form submissions
-  * Implemented contact form API endpoints with real database storage
+  * Implemented contact form API endpoints with database storage
   * Added resume download endpoint serving PDF file
   * Added download resume buttons to hero and contact sections
   * Updated storage interface to support contact CRUD operations
+- June 29, 2025. Migrated from SQLite to JSON file storage:
+  * Replaced SQLite database with simple JSON file storage
+  * Created JsonStorage class for file-based contact and user storage
+  * Contact submissions now saved to data/contacts.json
+  * Removed drizzle-orm dependencies and SQLite table definitions
+  * Updated schema to use plain TypeScript interfaces with Zod validation
 - June 29, 2025. Updated UI and social media integration:
   * Made all hero section buttons consistent with solid blue styling
   * Added profile image integration from user's WhatsApp photo
